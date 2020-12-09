@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,11 @@ namespace Diabet_Analiz_Sistemi
             InitializeComponent();
         }
         public string yeniSatir;
+        List<string> satir;
+        public int satirNo=1;
         private void HastaKayit_Load(object sender, EventArgs e)
         {
-
+            satir = File.ReadAllLines(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv").ToList();
         }
 
         private void linkLabel1_MouseClick(object sender, MouseEventArgs e)
@@ -51,26 +54,20 @@ namespace Diabet_Analiz_Sistemi
 
             string yeniSatir = yeniVeri.Age + yeniVeri.Gender + yeniVeri.Polyuria + yeniVeri.Polydipsia + yeniVeri.Sudden_weight_loss + yeniVeri.weakness + yeniVeri.Polyphagia + yeniVeri.Genital_thrush + yeniVeri.visual_blurring + yeniVeri.Itching + yeniVeri.Irrıtability + yeniVeri.delayed_Healing + yeniVeri.partial_Paresis + yeniVeri.muscle_Stiffness + yeniVeri.Alopecia + yeniVeri.Obesity + yeniVeri._class;
 
-            if (Application.OpenForms["HastaTablo"]==null)
-            {
-                HastaTablo.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, yeniSatir);
-            }
-            else
-            {
-                excelYazdir(yeniSatir);
-            }
-           
-           
+            HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
+               
+                MessageBox.Show("sdfa");
+
+            hastaTabloSinifi.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, yeniSatir, satirNo);
+            excelYazdir(yeniSatir);
+            
+
+
         }
-        public void HastaGuncelleme()
+        public void hastaGuncelleme()
         {
-            if (yeniSatir !=null)
-            {
-                HastaTablo.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, yeniSatir);
-
-            }
+            
         }
-
         public void excelYazdir(string yeniSatir)
         {
             using (System.IO.StreamWriter stream = new System.IO.StreamWriter(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv", true))

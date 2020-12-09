@@ -25,11 +25,14 @@ namespace Diabet_Analiz_Sistemi
 
         public List<VeriSinifi> veriSinif = new List<VeriSinifi>();
         public List<string> satir;
-        public int hastaSayisi=0;
+        public int hastaSayisi = 0;
         private void Form1_Load(object sender, EventArgs e)
         {
-            HastaKayit.Show();
-            HastaKayit.Visible = false;
+            HastaKayit hastaKayit = new HastaKayit();
+            hastaKayit.Show();
+            hastaKayit.Visible = false;
+            // HastaKayit.Show();
+            // HastaKayit.Visible = false;
             tablo_Doldur();
         }
         public void tablo_Doldur()
@@ -100,17 +103,19 @@ namespace Diabet_Analiz_Sistemi
             }
             catch (Exception)
             { }
-           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //Düzenleme İşlemi
             //tablo_Doldur();
-           // this.Close();
+            // this.Close();
+            
             HastaKayit.Visible = true;
+            HastaKayit.satirNo = isartliSatir;
             // veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, HastaKayit.yeniSatir);
-           // HastaKayit.HastaGuncelleme();
+            // HastaKayit.HastaGuncelleme();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -118,45 +123,8 @@ namespace Diabet_Analiz_Sistemi
             ////Silme İşlemi
             ///
 
-            veriTemizle("Verisini Silmek İstiyor musunuz ?", "Kayıt Silme",false);
+            HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
+            hastaTabloSinifi.veriTemizle("Verisini Silmek İstiyor musunuz ?", "Kayıt Silme", false,satir,null,isartliSatir);
         }
-        public void veriTemizle(string mesaj,string baslik, bool guncellemeDurumu,string guncellikveri="")
-        {
-            
-            DialogResult dialogResult = new DialogResult();
-            dialogResult = MessageBox.Show(satir[isartliSatir] + " \n"+mesaj, baslik, MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                TextWriter tw = new StreamWriter(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv");
-                string basliklar = satir[0];
-                tw.Write("");
-                tw.Close();
-                for (int i = 0; i < satir.Count; i++)
-                {
-                    if (i == 0)
-                    {
-                        satir[i] = basliklar;
-                    }
-                    if (isartliSatir == i)
-                    {
-                        if (guncellemeDurumu==true)
-                        {
-                            satir[i] = guncellikveri;
-                            this.Hide();
-                        }
-
-                    }
-                    else
-                    {
-                        HastaKayit.excelYazdir(satir[i]);
-                    }
-                }
-
-                this.Close();
-                HastaTablo hastaTablo = new HastaTablo();
-                hastaTablo.Show();
-            }
-        }
-
     }
 }

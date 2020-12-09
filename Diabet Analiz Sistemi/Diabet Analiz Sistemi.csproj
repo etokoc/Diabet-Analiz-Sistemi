@@ -89,6 +89,7 @@
     <Compile Include="HastaKayit.Designer.cs">
       <DependentUpon>HastaKayit.cs</DependentUpon>
     </Compile>
+    <Compile Include="HastaTabloSinifi.cs" />
     <Compile Include="ObeziteHesaplama.cs">
       <SubType>Form</SubType>
     </Compile>
