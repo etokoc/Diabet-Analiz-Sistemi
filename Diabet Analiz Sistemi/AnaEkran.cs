@@ -25,12 +25,15 @@ namespace Diabet_Analiz_Sistemi
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            this.Hide();
             HastaKayit hasta = new HastaKayit();
             hasta.Show();
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             HastaTablo hastatablo = new HastaTablo();
             hastatablo.Show();
         }

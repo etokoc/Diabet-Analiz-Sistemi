@@ -46,7 +46,6 @@ namespace Diabet_Analiz_Sistemi
                     }
                 }
 
-                //this.Close();
                 HastaTablo hastaTablo = new HastaTablo();
                 hastaTablo.Show();
             }

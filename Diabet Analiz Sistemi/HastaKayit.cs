@@ -19,7 +19,9 @@ namespace Diabet_Analiz_Sistemi
         }
         public string yeniSatir;
         List<string> satir;
-        public int satirNo=1;
+        public int satirNo = 1;
+        HastaTablo hastaTablo;
+        HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
         private void HastaKayit_Load(object sender, EventArgs e)
         {
             satir = File.ReadAllLines(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv").ToList();
@@ -30,8 +32,7 @@ namespace Diabet_Analiz_Sistemi
             ObeziteHesaplama obeziteHesaplama = new ObeziteHesaplama();
             obeziteHesaplama.ShowDialog();
         }
-        HastaTablo HastaTablo;
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             VeriSinifi yeniVeri = new VeriSinifi();
             yeniVeri.Age = textBox1.Text + ",";
@@ -54,20 +55,17 @@ namespace Diabet_Analiz_Sistemi
 
             string yeniSatir = yeniVeri.Age + yeniVeri.Gender + yeniVeri.Polyuria + yeniVeri.Polydipsia + yeniVeri.Sudden_weight_loss + yeniVeri.weakness + yeniVeri.Polyphagia + yeniVeri.Genital_thrush + yeniVeri.visual_blurring + yeniVeri.Itching + yeniVeri.Irrıtability + yeniVeri.delayed_Healing + yeniVeri.partial_Paresis + yeniVeri.muscle_Stiffness + yeniVeri.Alopecia + yeniVeri.Obesity + yeniVeri._class;
 
-            HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
-               
-                MessageBox.Show("sdfa");
+
+            //güncelleme islemi alltaki kod
 
             hastaTabloSinifi.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, yeniSatir, satirNo);
+
             excelYazdir(yeniSatir);
-            
+            this.Close();
 
 
         }
-        public void hastaGuncelleme()
-        {
-            
-        }
+
         public void excelYazdir(string yeniSatir)
         {
             using (System.IO.StreamWriter stream = new System.IO.StreamWriter(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv", true))
@@ -79,7 +77,7 @@ namespace Diabet_Analiz_Sistemi
 
         public void formDoldur(string age, string gender, string polyuria, string polydipsia, string sudden, string weakness, string polyphagia, string genital, string visual, string itching, string irriability, string delayed, string partial, string muscle, string alopecia, string obesity, string __class)
         {
-            //Formu otomatik dolduruyorum
+            //Formu otomatik dolduruyorum--!foreach ile control yapabilirdim ancak tüm  kontrolleri ayıramadım.Bu yüzden if cok fazla
             if (age != "")
             {
                 textBox1.Text = age;
@@ -212,6 +210,13 @@ namespace Diabet_Analiz_Sistemi
             {
                 radioButton6.Checked = true;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AnaEkran anaEkrani = new AnaEkran();
+            anaEkrani.Show();
         }
     }
 

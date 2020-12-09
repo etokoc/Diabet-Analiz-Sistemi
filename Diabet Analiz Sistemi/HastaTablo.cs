@@ -77,7 +77,7 @@ namespace Diabet_Analiz_Sistemi
         {
             try
             {
-                string[] data = satir[e.RowIndex].Split(',');
+                string[] data = satir[e.RowIndex+1].Split(',');
 
                 string age = data[0];
                 string gender = data[1] == "Male" ? "Male" : "Female";
@@ -97,7 +97,7 @@ namespace Diabet_Analiz_Sistemi
                 string obesity = data[15] == "Yes" ? "Yes" : "No";
                 string clas = data[16] == "Positive" ? "Positive" : "Negative";
 
-                isartliSatir = e.RowIndex + 1;
+                isartliSatir = e.RowIndex +1;
                 //formu dolduruyorum.Güncelleme için
                 HastaKayit.formDoldur(age, gender, polyuria, polydipsia, sudden, weakness, polyphagia, genital, visual, itching, irrability, delayed, partial, muscle, alopceia, obesity, clas);
             }
@@ -109,22 +109,25 @@ namespace Diabet_Analiz_Sistemi
         private void button1_Click(object sender, EventArgs e)
         {
             //Düzenleme İşlemi
-            //tablo_Doldur();
-            // this.Close();
-            
+     
             HastaKayit.Visible = true;
             HastaKayit.satirNo = isartliSatir;
-            // veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, HastaKayit.yeniSatir);
-            // HastaKayit.HastaGuncelleme();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ////Silme İşlemi
-            ///
-
+    
             HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
             hastaTabloSinifi.veriTemizle("Verisini Silmek İstiyor musunuz ?", "Kayıt Silme", false,satir,null,isartliSatir);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AnaEkran anaEkran = new AnaEkran();
+            anaEkran.Show();
         }
     }
 }
