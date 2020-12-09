@@ -53,6 +53,7 @@ namespace Diabet_Analiz_Sistemi
 
             if (Application.OpenForms["HastaTablo"]==null)
             {
+                HastaTablo.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, yeniSatir);
             }
             else
             {

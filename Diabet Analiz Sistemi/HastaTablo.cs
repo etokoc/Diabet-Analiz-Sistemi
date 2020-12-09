@@ -26,7 +26,6 @@ namespace Diabet_Analiz_Sistemi
         public List<VeriSinifi> veriSinif = new List<VeriSinifi>();
         public List<string> satir;
         public int hastaSayisi=0;
-        public  bool guncelDurum = false;
         private void Form1_Load(object sender, EventArgs e)
         {
             HastaKayit.Show();
@@ -108,10 +107,10 @@ namespace Diabet_Analiz_Sistemi
         {
             //Düzenleme İşlemi
             //tablo_Doldur();
-            this.Close();
+           // this.Close();
             HastaKayit.Visible = true;
             // veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, HastaKayit.yeniSatir);
-            HastaKayit.HastaGuncelleme();
+           // HastaKayit.HastaGuncelleme();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -144,7 +143,6 @@ namespace Diabet_Analiz_Sistemi
                         {
                             satir[i] = guncellikveri;
                             this.Hide();
-                            guncelDurum = true;
                         }
 
                     }
