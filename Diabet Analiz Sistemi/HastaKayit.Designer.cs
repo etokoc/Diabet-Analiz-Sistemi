@@ -677,6 +677,7 @@
             this.Name = "HastaKayit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HastaKayit";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HastaKayit_FormClosed);
             this.Load += new System.EventHandler(this.HastaKayit_Load);
             this.groupCinsiyet.ResumeLayout(false);
             this.groupCinsiyet.PerformLayout();

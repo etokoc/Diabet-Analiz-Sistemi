@@ -55,15 +55,19 @@ namespace Diabet_Analiz_Sistemi
 
             string yeniSatir = yeniVeri.Age + yeniVeri.Gender + yeniVeri.Polyuria + yeniVeri.Polydipsia + yeniVeri.Sudden_weight_loss + yeniVeri.weakness + yeniVeri.Polyphagia + yeniVeri.Genital_thrush + yeniVeri.visual_blurring + yeniVeri.Itching + yeniVeri.Irrıtability + yeniVeri.delayed_Healing + yeniVeri.partial_Paresis + yeniVeri.muscle_Stiffness + yeniVeri.Alopecia + yeniVeri.Obesity + yeniVeri._class;
 
-
             //güncelleme islemi alltaki kod
-
-            hastaTabloSinifi.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, yeniSatir, satirNo);
-
-            excelYazdir(yeniSatir);
-            this.Close();
-
-
+            if (hastaTablo==null)
+            {
+                excelYazdir(yeniSatir);
+                MessageBox.Show("Yeni Kayıt İşlemi Tamamlandı.","Yeni Kayıt",MessageBoxButtons.OK);
+            }
+            else
+            {
+                hastaTabloSinifi.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, yeniSatir, satirNo);
+                this.Close();
+                HastaTablo hastaTablo = new HastaTablo();
+                hastaTablo.Show();
+            }
         }
 
         public void excelYazdir(string yeniSatir)
@@ -217,6 +221,12 @@ namespace Diabet_Analiz_Sistemi
             this.Close();
             AnaEkran anaEkrani = new AnaEkran();
             anaEkrani.Show();
+        }
+
+        private void HastaKayit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            AnaEkran anaEkran = new AnaEkran();
+            anaEkran.Show();
         }
     }
 

@@ -37,5 +37,10 @@ namespace Diabet_Analiz_Sistemi
             HastaTablo hastatablo = new HastaTablo();
             hastatablo.Show();
         }
+
+        private void AnaEkran_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

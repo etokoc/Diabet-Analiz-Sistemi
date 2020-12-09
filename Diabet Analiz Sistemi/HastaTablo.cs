@@ -129,5 +129,11 @@ namespace Diabet_Analiz_Sistemi
             AnaEkran anaEkran = new AnaEkran();
             anaEkran.Show();
         }
+
+        private void HastaTablo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            AnaEkran anaEkran = new AnaEkran();
+            anaEkran.Show();
+        }
     }
 }
