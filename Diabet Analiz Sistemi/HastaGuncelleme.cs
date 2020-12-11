@@ -20,7 +20,6 @@ namespace Diabet_Analiz_Sistemi
         public string yeniSatir;
         List<string> satir;
         public int satirNo = 1;
-        HastaTablo hastaTablo;
         HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
 
         private void HastaGuncelleme_Load(object sender, EventArgs e)
@@ -57,21 +56,11 @@ namespace Diabet_Analiz_Sistemi
 
             string yeniSatir = yeniVeri.Age + yeniVeri.Gender + yeniVeri.Polyuria + yeniVeri.Polydipsia + yeniVeri.Sudden_weight_loss + yeniVeri.weakness + yeniVeri.Polyphagia + yeniVeri.Genital_thrush + yeniVeri.visual_blurring + yeniVeri.Itching + yeniVeri.Irrıtability + yeniVeri.delayed_Healing + yeniVeri.partial_Paresis + yeniVeri.muscle_Stiffness + yeniVeri.Alopecia + yeniVeri.Obesity + yeniVeri._class;
 
-            // güncelleme islemi  
+            // güncelleme islemi  method içindeki true güncelleme yapmasını ayarlıyor
 
 
             hastaTabloSinifi.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, yeniSatir, satirNo);
-           // excelYazdir(yeniSatir);
-           
-
-        }
-        public void excelYazdir(string yeniSatir)
-        {
-            using (System.IO.StreamWriter stream = new System.IO.StreamWriter(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv", true))
-            {
-                stream.WriteLine(yeniSatir);
-            }
-
+            this.Close();
         }
         public void formDoldur(string age, string gender, string polyuria, string polydipsia, string sudden, string weakness, string polyphagia, string genital, string visual, string itching, string irriability, string delayed, string partial, string muscle, string alopecia, string obesity, string __class)
         {
@@ -212,15 +201,15 @@ namespace Diabet_Analiz_Sistemi
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            //AnaEkran anaEkrani = new AnaEkran();
-           // anaEkrani.Show();
+            this.Close();
+            AnaEkran anaEkrani = new AnaEkran();
+            anaEkrani.Show();
         }
 
         private void HastaGuncelleme_FormClosed(object sender, FormClosedEventArgs e)
         {
-        //    AnaEkran anaEkran = new AnaEkran();
-        //    anaEkran.Show();
+            //AnaEkran anaEkran = new AnaEkran();
+            //anaEkran.Show();
         }
     }
 }

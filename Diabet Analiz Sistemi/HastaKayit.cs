@@ -20,7 +20,6 @@ namespace Diabet_Analiz_Sistemi
         public string yeniSatir;
         List<string> satir;
         public int satirNo = 1;
-        HastaTablo hastaTablo;
         HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
         private void HastaKayit_Load(object sender, EventArgs e)
         {

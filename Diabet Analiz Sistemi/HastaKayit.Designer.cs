@@ -599,6 +599,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.MistyRose;
             this.linkLabel1.Location = new System.Drawing.Point(54, 51);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(102, 13);
@@ -631,28 +632,32 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(707, 317);
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.Location = new System.Drawing.Point(699, 317);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 35);
+            this.button1.Size = new System.Drawing.Size(114, 35);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Diyabet Hesapla";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Diyabet Hesapla Tabloya Kaydet";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(12, 9);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(35, 25);
             this.button2.TabIndex = 9;
             this.button2.Text = "Geri";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // HastaKayit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Chocolate;
             this.ClientSize = new System.Drawing.Size(825, 364);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -674,9 +679,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HastaKayit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HastaKayit";
+            this.Text = "Hasta Kayıt";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HastaKayit_FormClosed);
             this.Load += new System.EventHandler(this.HastaKayit_Load);
             this.groupCinsiyet.ResumeLayout(false);

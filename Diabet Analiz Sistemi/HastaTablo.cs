@@ -26,6 +26,7 @@ namespace Diabet_Analiz_Sistemi
         public List<VeriSinifi> veriSinif = new List<VeriSinifi>();
         public List<string> satir;
         public int hastaSayisi = 0;
+        public bool button = true;
         private void Form1_Load(object sender, EventArgs e)
         {
             HastaKayit hastaKayit = new HastaKayit();
@@ -114,36 +115,53 @@ namespace Diabet_Analiz_Sistemi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Düzenleme İşlemi
-     
-            hastaGuncelleme.Visible = true;
-            hastaGuncelleme.satirNo = isartliSatir;
-            this.Close();
-            HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
-            hastaTabloSinifi.veriTemizle("Verisini Guncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, null, isartliSatir);
+            //Düzenleme İşlemi (this.close işlemini datagridviewi guncellemek için yapıyorum)
+            if (isartliSatir==0)
+            {
+                MessageBox.Show("Lütfen Bir Seçim Yapın", "Uyarı");
+            }
+            else
+            {
+                hastaGuncelleme.Visible = true;
+                hastaGuncelleme.satirNo = isartliSatir;
+                this.Close();
+                HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
+                button = true;
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ////Silme İşlemi
-            //HastaKayit.Visible = true;
-            this.Close();
-
-            HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
-            hastaTabloSinifi.veriTemizle("Verisini Silmek İstiyor musunuz ?", "Kayıt Silme", false,satir,null,isartliSatir);
+            if (isartliSatir == 0)
+            {
+                MessageBox.Show("Lütfen Bir Seçim Yapın", "Uyarı");
+            }
+            else
+            {
+                this.Close();
+                HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
+                hastaTabloSinifi.veriTemizle("Verisini Silmek İstiyor musunuz ?", "Kayıt Silme", false, satir, null, isartliSatir);
+                button = true;
+            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+          
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {  
+            //Ana menüye dönme 
+
             this.Close();
             AnaEkran anaEkran = new AnaEkran();
             anaEkran.Show();
-        }
 
-        private void HastaTablo_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //AnaEkran anaEkran = new AnaEkran();
-            //anaEkran.Show();
         }
     }
 }
