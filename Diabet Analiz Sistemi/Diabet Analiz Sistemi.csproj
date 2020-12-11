@@ -77,6 +77,12 @@
       <DependentUpon>AnaEkran.cs</DependentUpon>
     </Compile>
     <Compile Include="CsvReader.cs" />
+    <Compile Include="HastaGuncelleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HastaGuncelleme.Designer.cs">
+      <DependentUpon>HastaGuncelleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="HastaTablo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,7 @@
       <DependentUpon>HastaKayit.cs</DependentUpon>
     </Compile>
     <Compile Include="HastaTabloSinifi.cs" />
+    <Compile Include="KayitFormSinifi.cs" />
     <Compile Include="ObeziteHesaplama.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +108,9 @@
     <Compile Include="VeriSinifi.cs" />
     <EmbeddedResource Include="AnaEkran.resx">
       <DependentUpon>AnaEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HastaGuncelleme.resx">
+      <DependentUpon>HastaGuncelleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HastaTablo.resx">
       <DependentUpon>HastaTablo.cs</DependentUpon>

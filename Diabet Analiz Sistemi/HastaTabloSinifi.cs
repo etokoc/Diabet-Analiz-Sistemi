@@ -10,8 +10,13 @@ namespace Diabet_Analiz_Sistemi
 {
     class HastaTabloSinifi
     {
+        public HastaKayit hasta;
+        public HastaTablo hastaTablo;
+
         public void veriTemizle(string mesaj, string baslik, bool guncellemeDurumu, List<string> satir, string guncellikveri = "", int isaretliSatir = 1)
         {
+            hasta = new HastaKayit();
+            hastaTablo = new HastaTablo();
 
             DialogResult dialogResult = new DialogResult();
             dialogResult = MessageBox.Show(satir[isaretliSatir] + " \n" + mesaj, baslik, MessageBoxButtons.YesNo);
@@ -35,6 +40,7 @@ namespace Diabet_Analiz_Sistemi
                         if (guncellemeDurumu == true)
                         {
                             satir[i] = guncellikveri;
+                            hasta.excelYazdir(satir[i]);
                         }
                         else
                         {
@@ -43,12 +49,11 @@ namespace Diabet_Analiz_Sistemi
                     }
                     else
                     {
-                        HastaKayit hasta = new HastaKayit();
+                        
                         hasta.excelYazdir(satir[i]);
                     }
                 }
 
-                HastaTablo hastaTablo = new HastaTablo();
                 hastaTablo.Show();
             }
         }

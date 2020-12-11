@@ -20,7 +20,7 @@ namespace Diabet_Analiz_Sistemi
             InitializeComponent();
         }
         public HastaKayit HastaKayit = new HastaKayit();
-
+        public HastaGuncelleme hastaGuncelleme=new HastaGuncelleme();
         //Age,Gender,Polyuria,Polydipsia,sudden weight loss,weakness,Polyphagia,Genital thrush,visual blurring,Itching,Irritability,delayed healing,partial paresis,muscle stiffness,Alopecia,Obesity,class
 
         public List<VeriSinifi> veriSinif = new List<VeriSinifi>();
@@ -29,8 +29,14 @@ namespace Diabet_Analiz_Sistemi
         private void Form1_Load(object sender, EventArgs e)
         {
             HastaKayit hastaKayit = new HastaKayit();
+            HastaGuncelleme hastaGuncelleme = new HastaGuncelleme();
+            hastaGuncelleme.Show();
+            hastaGuncelleme.Visible = false;
             hastaKayit.Show();
             hastaKayit.Visible = false;
+            //hastaGuncelleme = new HastaGuncelleme();
+          //  hastaGuncelleme.Show();
+           // hastaGuncelleme.Visible = false;
             // HastaKayit.Show();
             // HastaKayit.Visible = false;
             tablo_Doldur();
@@ -99,7 +105,7 @@ namespace Diabet_Analiz_Sistemi
 
                 isartliSatir = e.RowIndex +1;
                 //formu dolduruyorum.Güncelleme için
-                HastaKayit.formDoldur(age, gender, polyuria, polydipsia, sudden, weakness, polyphagia, genital, visual, itching, irrability, delayed, partial, muscle, alopceia, obesity, clas);
+                hastaGuncelleme.formDoldur(age, gender, polyuria, polydipsia, sudden, weakness, polyphagia, genital, visual, itching, irrability, delayed, partial, muscle, alopceia, obesity, clas);
             }
             catch (Exception)
             { }
@@ -110,15 +116,19 @@ namespace Diabet_Analiz_Sistemi
         {
             //Düzenleme İşlemi
      
-            HastaKayit.Visible = true;
-            HastaKayit.satirNo = isartliSatir;
+            hastaGuncelleme.Visible = true;
+            hastaGuncelleme.satirNo = isartliSatir;
             this.Close();
+            HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
+            hastaTabloSinifi.veriTemizle("Verisini Guncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, null, isartliSatir);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ////Silme İşlemi
-    
+            //HastaKayit.Visible = true;
+            this.Close();
+
             HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
             hastaTabloSinifi.veriTemizle("Verisini Silmek İstiyor musunuz ?", "Kayıt Silme", false,satir,null,isartliSatir);
         }
@@ -132,8 +142,8 @@ namespace Diabet_Analiz_Sistemi
 
         private void HastaTablo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            AnaEkran anaEkran = new AnaEkran();
-            anaEkran.Show();
+            //AnaEkran anaEkran = new AnaEkran();
+            //anaEkran.Show();
         }
     }
 }

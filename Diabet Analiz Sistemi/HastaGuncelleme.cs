@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Diabet_Analiz_Sistemi
 {
-    public partial class HastaKayit : Form
+    public partial class HastaGuncelleme : Form
     {
-        public HastaKayit()
+        public HastaGuncelleme()
         {
             InitializeComponent();
         }
@@ -22,17 +22,19 @@ namespace Diabet_Analiz_Sistemi
         public int satirNo = 1;
         HastaTablo hastaTablo;
         HastaTabloSinifi hastaTabloSinifi = new HastaTabloSinifi();
-        private void HastaKayit_Load(object sender, EventArgs e)
+
+        private void HastaGuncelleme_Load(object sender, EventArgs e)
         {
             satir = File.ReadAllLines(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv").ToList();
         }
 
-        private void linkLabel1_MouseClick(object sender, MouseEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ObeziteHesaplama obeziteHesaplama = new ObeziteHesaplama();
             obeziteHesaplama.ShowDialog();
         }
-        private void Button1_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             VeriSinifi yeniVeri = new VeriSinifi();
             yeniVeri.Age = textBox1.Text + ",";
@@ -55,13 +57,14 @@ namespace Diabet_Analiz_Sistemi
 
             string yeniSatir = yeniVeri.Age + yeniVeri.Gender + yeniVeri.Polyuria + yeniVeri.Polydipsia + yeniVeri.Sudden_weight_loss + yeniVeri.weakness + yeniVeri.Polyphagia + yeniVeri.Genital_thrush + yeniVeri.visual_blurring + yeniVeri.Itching + yeniVeri.Irrıtability + yeniVeri.delayed_Healing + yeniVeri.partial_Paresis + yeniVeri.muscle_Stiffness + yeniVeri.Alopecia + yeniVeri.Obesity + yeniVeri._class;
 
-            // Silme islemi alltaki kod
+            // güncelleme islemi  
 
-            excelYazdir(yeniSatir);
-            MessageBox.Show("Yeni Kayıt İşlemi Tamamlandı.", "Yeni Kayıt", MessageBoxButtons.OK);
+
+            hastaTabloSinifi.veriTemizle("Verisini Güncellemek İstiyor musunuz ?", "Kayıt Guncelleme", true, satir, yeniSatir, satirNo);
+           // excelYazdir(yeniSatir);
+           
 
         }
-
         public void excelYazdir(string yeniSatir)
         {
             using (System.IO.StreamWriter stream = new System.IO.StreamWriter(Application.StartupPath.ToString() + @"\diabetes_data_upload.csv", true))
@@ -70,7 +73,6 @@ namespace Diabet_Analiz_Sistemi
             }
 
         }
-
         public void formDoldur(string age, string gender, string polyuria, string polydipsia, string sudden, string weakness, string polyphagia, string genital, string visual, string itching, string irriability, string delayed, string partial, string muscle, string alopecia, string obesity, string __class)
         {
             //Formu otomatik dolduruyorum--!foreach ile control yapabilirdim ancak tüm  kontrolleri ayıramadım.Bu yüzden if cok fazla
@@ -210,18 +212,15 @@ namespace Diabet_Analiz_Sistemi
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
-            AnaEkran anaEkrani = new AnaEkran();
-            anaEkrani.Show();
+            //this.Close();
+            //AnaEkran anaEkrani = new AnaEkran();
+           // anaEkrani.Show();
         }
 
-        private void HastaKayit_FormClosed(object sender, FormClosedEventArgs e)
+        private void HastaGuncelleme_FormClosed(object sender, FormClosedEventArgs e)
         {
-            AnaEkran anaEkran = new AnaEkran();
-            anaEkran.Show();
+        //    AnaEkran anaEkran = new AnaEkran();
+        //    anaEkran.Show();
         }
     }
-
-
 }
-
